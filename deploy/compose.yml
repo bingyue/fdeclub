@@ -1,0 +1,67 @@
+name: fdeclub
+services:
+  db:
+    image: mirror.ccs.tencentyun.com/library/postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?required}
+      POSTGRES_DB: fdeclub
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-db.sh:/docker-entrypoint-initdb.d/10-fdeclub.sh:ro
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U postgres -d fdeclub']
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    mem_limit: 768m
+    logging: &logs
+      driver: json-file
+      options: {max-size: 10m, max-file: '3'}
+  auth:
+    image: supabase/gotrue:v2.197.0
+    restart: unless-stopped
+    depends_on:
+      db: {condition: service_healthy}
+    ports: ['127.0.0.1:8018:9999']
+    environment:
+      GOTRUE_API_HOST: 0.0.0.0
+      GOTRUE_API_PORT: 9999
+      API_EXTERNAL_URL: https://fdeclub.net/api/identity
+      GOTRUE_SITE_URL: https://fdeclub.net
+      GOTRUE_URI_ALLOW_LIST: https://fdeclub.net/auth/callback
+      GOTRUE_DB_DRIVER: postgres
+      GOTRUE_DB_DATABASE_URL: postgres://supabase_auth_admin:${POSTGRES_PASSWORD}@db:5432/fdeclub
+      GOTRUE_JWT_ADMIN_ROLES: service_role
+      GOTRUE_JWT_AUD: authenticated
+      GOTRUE_JWT_DEFAULT_GROUP_NAME: authenticated
+      GOTRUE_JWT_EXP: 3600
+      GOTRUE_JWT_SECRET: ${JWT_SECRET:?required}
+      GOTRUE_JWT_ISSUER: https://fdeclub.net/api/identity
+      GOTRUE_DISABLE_SIGNUP: 'true'
+      GOTRUE_EXTERNAL_EMAIL_ENABLED: 'true'
+      GOTRUE_EXTERNAL_ANONYMOUS_USERS_ENABLED: 'false'
+      GOTRUE_MAILER_AUTOCONFIRM: 'false'
+      GOTRUE_EXTERNAL_PHONE_ENABLED: 'false'
+      GOTRUE_SMTP_HOST: ''
+      GOTRUE_MAILER_URLPATHS_CONFIRMATION: /verify
+      GOTRUE_MAILER_URLPATHS_RECOVERY: /verify
+    mem_limit: 256m
+    logging: *logs
+  rest:
+    image: postgrest/postgrest:v14.18
+    restart: unless-stopped
+    depends_on:
+      db: {condition: service_healthy}
+    ports: ['127.0.0.1:8017:3000']
+    environment:
+      PGRST_DB_URI: postgres://authenticator:${POSTGRES_PASSWORD}@db:5432/fdeclub
+      PGRST_DB_SCHEMAS: public
+      PGRST_DB_ANON_ROLE: anon
+      PGRST_JWT_SECRET: ${JWT_SECRET:?required}
+      PGRST_DB_MAX_ROWS: 1000
+      PGRST_DB_POOL: 10
+    mem_limit: 256m
+    logging: *logs
+volumes:
+  postgres_data:

@@ -1,0 +1,16 @@
+node_modules/
+.next/
+.env*
+!.env.example
+test-results/
+playwright-report/
+*.tsbuildinfo
+.DS_Store
+.supabase/
+supabase/.temp/
+supabase/.branches/
+docs/production-dns.png
+.local-admin.json
+.env.live-test
+
+.deploy/

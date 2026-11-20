@@ -1,0 +1,697 @@
+/* FDE brand blue + WAIC blue/violet gradients. Verified against both sites 2026-11-20. */
+:root {
+  color-scheme: light;
+  --background: #ffffff;
+  --foreground: #0b1220;
+  --surface: #ffffff;
+  --surface-raised: #eef3ff;
+  --surface-soft: #f7f8fa;
+  --accent: #1d5cff;
+  --accent-hover: #0b3fd0;
+  --accent-ink: #ffffff;
+  --accent-soft: #1d5cff0d;
+  --link-accent: #1d5cff;
+  --text-secondary: #475569;
+  --text-muted: #5c6b82;
+  --border: #e0e6f0;
+  --border-strong: #a5b2ca;
+  --navy: #0a1120;
+  --gradient-blue: #506bff;
+  --gradient-violet: #a350ff;
+  --gradient: linear-gradient(
+    110deg,
+    var(--gradient-blue),
+    var(--gradient-violet)
+  );
+  --gradient-soft: linear-gradient(110deg, #f0f4ff, #f2efff);
+  --gradient-type: linear-gradient(110deg, #3155df, #8035c8);
+  --sphere-rgb: 108, 149, 255;
+  --sphere-violet-rgb: 163, 80, 255;
+  --sphere-light: #d6caff;
+  --ink: var(--foreground);
+  --muted: var(--text-secondary);
+  --blue: var(--accent);
+  --mint: var(--accent);
+  --paper: var(--background);
+  --line: var(--border);
+  --dark: var(--navy);
+}
+.experience-home {
+  --night: var(--navy);
+  --signal: var(--accent);
+}
+/* Dark sections have their own text tokens; controls retain the FDE primary blue. */
+.hero-shell,
+.journey-section,
+.page-hero,
+.plan-featured,
+.footer {
+  color-scheme: dark;
+  --foreground: #f8faff;
+  --text-secondary: #b3c0da;
+  --text-muted: #a0b0ce;
+  --border: #293753;
+  --border-strong: #5b6d90;
+  --link-accent: #9bb7ff;
+  --ink: var(--foreground);
+  --muted: var(--text-secondary);
+  --line: var(--border);
+  color: var(--foreground);
+}
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+:focus-visible {
+  outline-color: var(--link-accent);
+}
+input:focus,
+textarea:focus,
+select:focus {
+  outline-color: var(--link-accent);
+}
+button,
+input,
+textarea,
+select {
+  color: inherit;
+}
+.topline {
+  background: #0a1120;
+  color: #b3c0da;
+  border-bottom: 1px solid #293753;
+}
+.header {
+  background: #ffffffed;
+  border-color: var(--border);
+}
+.brand-mark,
+.footer .brand-mark {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+.brand-mark i {
+  border-color: #d5e0ff;
+}
+.brand-word small,
+.footer .brand-word small {
+  color: var(--text-muted);
+}
+.desktop-nav a,
+.mobile-nav a {
+  color: var(--text-secondary);
+}
+.desktop-nav a:hover,
+.desktop-nav a[aria-current],
+.mobile-nav a[aria-current] {
+  color: var(--link-accent);
+}
+.desktop-nav a::after,
+.scroll-progress {
+  background: var(--gradient);
+}
+.nav-cta {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--link-accent);
+}
+.nav-cta:hover {
+  background: var(--accent-hover);
+}
+.menu-toggle {
+  color: var(--foreground);
+}
+.mobile-nav a[aria-current] {
+  background: var(--accent-soft);
+}
+.skip-link {
+  background: var(--surface-raised);
+  color: var(--foreground);
+}
+
+.button,
+.experience-home .hero-shell .button:first-child,
+.hero-shell .button,
+.page-hero .button,
+.plan-featured .button {
+  background: var(--accent);
+  border-color: var(--link-accent);
+  color: var(--accent-ink);
+}
+.button:hover,
+.experience-home .hero-shell .button:first-child:hover,
+.plan-featured .button:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  box-shadow: 0 8px 25px #1d5cff1c;
+}
+.button-secondary,
+.hero-shell .button-secondary,
+.page-hero .button-secondary {
+  background: transparent;
+  border-color: var(--border-strong);
+  color: var(--foreground);
+}
+.button-secondary:hover,
+.hero-shell .button-secondary:hover,
+.page-hero .button-secondary:hover {
+  background: #1d5cff0d;
+  border-color: var(--link-accent);
+}
+.text-link,
+.checkbox a,
+.legal a {
+  color: var(--link-accent);
+}
+.eyebrow,
+.feature-card > svg,
+.service-top svg,
+.join-links svg {
+  color: var(--link-accent);
+}
+
+/* Shared content labels retain readable contrast on white and tinted panels. */
+.micro-label,
+.service-top > span,
+.city-index,
+.city-name > span,
+.city-card > p,
+.city-section-meta > span,
+.step-line > span,
+.process-step p,
+.join-cta p,
+.join-links small,
+.section-note,
+.filter-tabs button,
+.result-count,
+.info-panel p,
+.section-soft p,
+.check-list,
+.number-list,
+.feature-card p,
+.feature-number,
+.form-aside > p,
+.vertical-steps li > span,
+.vertical-steps p,
+.aside-note,
+.form-heading p,
+.checkbox,
+.form-bottom > span,
+.form-success p,
+.notice,
+.plan-card p,
+.plan-price small,
+.manifesto p,
+.legal p,
+.event-top,
+.event-body > p,
+.event-meta,
+.event-description,
+.event-sidebar dt,
+.admin-top p,
+.stat-card span,
+.record-meta,
+.record-data dt,
+.notes-list small,
+.admin-label,
+.admin-empty,
+.empty-state p,
+.notes-list,
+.admin-nav a,
+.connection-strip,
+.connection-strip > span {
+  color: var(--text-secondary);
+}
+
+.section-soft,
+.city-section,
+.experience-home .city-section {
+  background: var(--surface-soft);
+}
+.service-card,
+.city-card,
+.info-panel,
+.feature-card,
+.form-card,
+.plan-card,
+.contact-link,
+.event-card,
+.event-sidebar,
+.stat-card,
+.admin-record {
+  background: var(--surface);
+  border-color: var(--border);
+}
+.service-card:hover,
+.city-card:hover {
+  background: #f8faff;
+  border-color: #a4b7ff;
+  box-shadow: 0 18px 40px #10265914;
+}
+.spotlight::before {
+  background: radial-gradient(
+    350px circle at var(--mx, 50%) var(--my, 0%),
+    #1d5cff1c,
+    transparent 65%
+  );
+}
+.service-link,
+.city-card-bottom,
+.join-links > a,
+.form-heading,
+.step-line {
+  border-color: var(--border);
+}
+.service-link > span {
+  background: #eef3ff;
+  color: var(--link-accent);
+}
+.service-card:hover .service-link > span {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+.city-card-bottom,
+.step-line svg {
+  color: var(--text-secondary);
+}
+.status {
+  background: #eef3ff;
+  color: #184bbf;
+  border-color: #c9d7ff;
+}
+.status i {
+  background: var(--accent);
+}
+.skyline i {
+  background: linear-gradient(90deg, #506bff, #a350ff);
+  border-color: #506bff50;
+}
+.experience-home .service-card::after {
+  color: #1d5cff09;
+}
+.experience-home .service-top svg {
+  border-color: #506bff38;
+}
+.experience-home .service-card .micro-label {
+  color: var(--text-muted);
+}
+.experience-home .city-section::before {
+  color: #1d5cff06;
+}
+.empty-state {
+  background: linear-gradient(130deg, #ffffff, #f5f3ff);
+  border-color: var(--border-strong);
+}
+.empty-icon {
+  color: var(--link-accent);
+  border-color: #b9b8ff;
+  box-shadow: 0 0 0 9px #506bff08;
+}
+.join-cta {
+  background: linear-gradient(120deg, #eef3ff, #f2efff);
+  border-color: #d8d9fa;
+}
+.experience-home .join-cta::after {
+  color: #506bff0c;
+}
+
+/* Navy hero: FDE blue signals with WAIC-inspired blue/violet light. */
+.experience-home .hero-shell::before {
+  background:
+    radial-gradient(ellipse at 70% 28%, #1d5cff38, transparent 52%),
+    radial-gradient(ellipse at 100% 72%, #a350ff28, transparent 48%);
+}
+.experience-home .hero-shell::after {
+  border-color: #7aa0ff26;
+  box-shadow:
+    0 0 0 90px #7aa0ff06,
+    0 0 0 180px #a350ff04;
+}
+.experience-home .hero-badge {
+  color: #bdcaff;
+  background: #506bff12;
+  border-color: #7a8aff45;
+}
+.hero-badge > i {
+  background: var(--accent);
+  box-shadow: 0 0 0 4px #506bff22;
+  animation-name: brand-pulse;
+}
+@keyframes brand-pulse {
+  50% {
+    box-shadow: 0 0 0 6px #506bff08;
+  }
+}
+.hero-kicker,
+.experience-home .hero-promises,
+.experience-home .hero-baseline {
+  color: var(--text-muted);
+}
+.experience-home .hero-copy > p {
+  color: var(--text-secondary);
+}
+.title-period {
+  color: var(--foreground);
+}
+.experience-home .hero-promises span + span::before {
+  color: #697fa8;
+}
+.experience-home .hero-baseline {
+  border-color: var(--border);
+}
+.network-sculpture .network-grid {
+  background-image:
+    linear-gradient(#7aa0ff0b 1px, transparent 1px),
+    linear-gradient(90deg, #7aa0ff0b 1px, transparent 1px);
+}
+.network-sculpture .orbit-one {
+  border-color: #506bff38;
+}
+.network-sculpture .orbit-two {
+  border-color: #a350ff40;
+}
+.orbit-one::before {
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+}
+.sphere-axis {
+  background: linear-gradient(90deg, transparent, #a350ff66, transparent);
+}
+.network-sculpture .network-core {
+  background: radial-gradient(circle at 30% 0, #263f8ae8, #151b38f5 80%);
+  border-color: #8b8bff80;
+  box-shadow: 0 0 70px #506bff22;
+}
+.network-sculpture .core-dot,
+.network-sculpture .network-node > span svg {
+  color: var(--link-accent);
+}
+.network-sculpture .network-node {
+  background: #111d3ae8;
+  border-color: #7a8aff50;
+  box-shadow: 0 10px 20px #040b2038;
+}
+.network-node i {
+  background: var(--accent);
+}
+.network-sculpture .network-node:hover,
+.network-sculpture .network-node:focus-visible {
+  background: #263769;
+  border-color: var(--link-accent);
+}
+.network-sculpture .network-core small,
+.network-sculpture .network-node small {
+  color: #bbcaef;
+}
+.network-sculpture .network-coordinate,
+.network-sculpture .network-caption {
+  color: #a0b0ce;
+}
+.signal-ribbon {
+  background: var(--gradient);
+  color: var(--accent-ink);
+  border-color: var(--link-accent);
+}
+
+.journey-section {
+  background: #0a1120;
+  color: var(--foreground);
+}
+.journey-sticky .eyebrow,
+.journey-readout small {
+  color: var(--link-accent);
+}
+.journey-intro,
+.journey-step > p,
+.journey-step-meta,
+.journey-scroll,
+.journey-nav button {
+  color: var(--text-secondary);
+}
+.journey-ring {
+  border-color: #7a8aff66;
+}
+.journey-ring-inner {
+  border-color: #a350ff30;
+}
+.journey-orbit-dot::after {
+  box-shadow: 0 0 22px #a350ff77;
+}
+.journey-nav button {
+  border-color: var(--border-strong);
+}
+.journey-nav button[aria-current] {
+  background: var(--accent);
+  border-color: var(--link-accent);
+  color: var(--accent-ink);
+}
+.journey-step {
+  border-top-color: var(--border);
+}
+.journey-step.is-active {
+  background: linear-gradient(110deg, #506bff1a, #a350ff0b);
+  border-left-color: var(--link-accent);
+}
+.journey-tags span {
+  color: #c3cff0;
+  border-color: #506bff38;
+}
+.journey-step .journey-detail {
+  color: #bbcaef;
+}
+.journey-start {
+  border-color: #607fb9;
+  color: var(--link-accent);
+}
+.journey-start:hover {
+  background: var(--accent-soft);
+}
+.experience-home .impact-section {
+  background: linear-gradient(115deg, #edf3ff, #eeebff 60%, #f7f2ff);
+  color: var(--foreground);
+}
+.experience-home .impact-section .eyebrow,
+.experience-home .impact-section .text-link {
+  color: var(--link-accent);
+}
+.experience-home .impact-section p,
+.experience-home .impact-labels {
+  color: var(--text-secondary);
+}
+.experience-home .impact-word {
+  color: var(--foreground);
+}
+.experience-home .impact-word span {
+  color: var(--link-accent);
+}
+.impact-diagram,
+.impact-diagram::before,
+.impact-diagram::after {
+  border-color: #1d5cff1c;
+}
+.impact-orbital i {
+  border-color: #7a8aff45;
+}
+.impact-labels i {
+  background: #7a8aff66;
+}
+.motion-toggle {
+  background: #ffffffed;
+  color: #334155;
+  border-color: #a5b2ca;
+  box-shadow: 0 4px 18px #10265914;
+}
+.motion-toggle:hover {
+  border-color: var(--link-accent);
+}
+
+/* Interior pages and operations share the same usable form palette. */
+.page-hero {
+  background:
+    radial-gradient(ellipse at 85% 35%, #506bff33, transparent 55%),
+    radial-gradient(ellipse at 100% 100%, #a350ff26, transparent 50%),
+    var(--navy);
+  border-bottom: 1px solid var(--border);
+}
+.page-hero .eyebrow {
+  color: var(--link-accent);
+}
+.page-hero p {
+  color: var(--text-secondary);
+}
+.page-orbit {
+  border-color: #7a8aff33;
+  box-shadow:
+    0 0 0 60px #506bff08,
+    0 0 0 120px #506bff08;
+}
+.filter-tabs button,
+.select-filter select {
+  border-color: var(--border-strong);
+}
+.filter-tabs button[aria-pressed="true"],
+.auth-tabs button[aria-pressed="true"],
+.admin-nav a[aria-current="page"] {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--link-accent);
+}
+.select-filter select,
+.field input,
+.field textarea,
+.field select,
+.admin-search input,
+.admin-search select {
+  background: #ffffff;
+  color: var(--foreground);
+  border-color: var(--border-strong);
+}
+.field label,
+.record-data dd,
+.event-sidebar dd {
+  color: #334155;
+}
+.field label > span,
+.check-list li::before,
+.number-list li::before {
+  color: var(--link-accent);
+}
+.field input::placeholder,
+.field textarea::placeholder {
+  color: #63718a;
+}
+.vertical-steps li > span {
+  background: var(--surface);
+  border-color: var(--border-strong);
+}
+.aside-note,
+.notice {
+  background: #eef3ff;
+  border-color: #bccdff;
+  color: #324b7d;
+}
+.checkbox input {
+  accent-color: var(--link-accent);
+}
+.form-error,
+.field-error {
+  color: #b42318;
+}
+.form-error {
+  background: #fff1f0;
+  border-color: #efaaa4;
+}
+.field input[aria-invalid="true"],
+.field textarea[aria-invalid="true"],
+.field select[aria-invalid="true"] {
+  border-color: #c54839;
+}
+.form-success,
+.save-result {
+  color: #167045;
+}
+.plan-featured {
+  background: linear-gradient(145deg, #162a5b, #1b143b);
+  border-color: #616de0;
+}
+.plan-featured .eyebrow {
+  color: var(--link-accent);
+}
+.plan-featured p,
+.plan-featured .plan-price small,
+.plan-featured .check-list {
+  color: #c3cff0;
+}
+.event-art {
+  background: linear-gradient(135deg, #dce3ff, #e7dfff);
+  color: #354db5;
+}
+.event-art-rings {
+  border-color: #506bff50;
+  box-shadow:
+    0 0 0 30px #506bff18,
+    0 0 0 60px #506bff18;
+}
+.auth-tabs button,
+.notes-list li,
+.small-button {
+  background: var(--surface-raised);
+  color: var(--text-secondary);
+  border-color: var(--border-strong);
+}
+.skeleton {
+  background-image: linear-gradient(90deg, #eef2fa, #e0e6f7, #eef2fa);
+}
+.admin-empty {
+  border-color: var(--border-strong);
+}
+.footer {
+  background: #0a1120;
+  color: var(--foreground);
+  border-top: 1px solid var(--border);
+}
+.footer-intro,
+.footer-signal,
+.footer-grid small,
+.footer-bottom,
+.footer-grid > div > a:not(.brand) {
+  color: var(--text-muted);
+}
+.footer-grid > div > h3 {
+  color: #eef3ff;
+}
+.footer-grid > div > a:hover {
+  color: var(--link-accent);
+}
+.footer-signal i {
+  background: var(--accent);
+}
+.footer-bottom {
+  border-color: var(--border);
+}
+
+.experience-home .hero-copy h1 em,
+.journey-sticky h2 > span {
+  color: #9bb7ff;
+  background: linear-gradient(105deg, #7aa0ff, #c39aff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: fit-content;
+}
+.experience-home .impact-word span {
+  background: var(--gradient-type);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: #3155df;
+  -webkit-text-fill-color: transparent;
+}
+.journey-readout > span {
+  color: #e0e6ff;
+}
+.experience-home .city-section {
+  background: linear-gradient(145deg, #f0f4ff, #f7f6ff 65%, #f7f8fa);
+}
+.network-sculpture .orbit-two {
+  border-color: #a350ff55;
+}
+.network-sculpture .network-core {
+  background: linear-gradient(145deg, #294b9eeb, #36205bea);
+}
+.network-sculpture .network-node:nth-of-type(even) {
+  border-color: #a350ff60;
+}
+.impact-orbital i:nth-child(2) {
+  border-color: #a350ff50;
+}
+.title-period {
+  -webkit-text-fill-color: var(--foreground);
+}
+@media (forced-colors: active) {
+  .experience-home .hero-copy h1 em,
+  .journey-sticky h2 > span,
+  .experience-home .impact-word span {
+    background: none;
+    -webkit-text-fill-color: currentColor;
+  }
+}

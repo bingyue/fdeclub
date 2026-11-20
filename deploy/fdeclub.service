@@ -1,0 +1,24 @@
+[Unit]
+Description=FDEClub website
+After=network-online.target docker.service nginx.service
+Wants=network-online.target
+[Service]
+Type=simple
+User=fdeclub
+Group=fdeclub
+WorkingDirectory=/opt/fdeclub/current/.next/standalone
+EnvironmentFile=/opt/fdeclub/shared/app.env
+Environment=NODE_ENV=production
+Environment=HOSTNAME=127.0.0.1
+Environment=PORT=3216
+ExecStart=/usr/bin/node server.js
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/opt/fdeclub/current/.next/standalone/.next
+MemoryMax=768M
+[Install]
+WantedBy=multi-user.target

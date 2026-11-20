@@ -1,0 +1,16 @@
+import {randomBytes} from 'node:crypto';
+import {existsSync,writeFileSync} from 'node:fs';
+process.loadEnvFile('/opt/fdeclub/shared/app.env');
+const target='/opt/fdeclub/shared/admin-credentials.json';
+if(existsSync(target))throw Error('Administrator credentials already exist; refusing to reset.');
+const password=randomBytes(24).toString('base64url'),email='fdechina@163.com';
+const key=process.env.SUPABASE_SERVICE_ROLE_KEY;
+const headers={apikey:key,Authorization:'Bearer '+key,'Content-Type':'application/json'};
+const root=process.env.NEXT_PUBLIC_SUPABASE_URL;
+const res=await fetch(root+'/auth/v1/admin/users',{method:'POST',headers,body:JSON.stringify({email,password,email_confirm:true,user_metadata:{full_name:'FDE前线运营管理员'}})});
+if(!res.ok)throw Error(`Create admin failed (${res.status}); inspect auth logs without exposing credentials.`);
+const user=await res.json();
+const changed=await fetch(root+'/rest/v1/profiles?id=eq.'+user.id,{method:'PATCH',headers,body:JSON.stringify({role:'super_admin'})});
+if(!changed.ok)throw Error('Could not grant administrator role.');
+writeFileSync(target,JSON.stringify({email,password,login:'https://fdeclub.net/login'},null,2),{mode:0o600});
+console.log('Administrator created; private credential file saved. No email was sent.');
