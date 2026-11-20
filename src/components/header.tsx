@@ -7,12 +7,25 @@ import { navItems } from "@/lib/catalog";
 export function Brand() {
   return (
     <Link href="/" className="brand" aria-label="FDE Club 首页">
-      <span className="brand-mark">
-        f<span>de</span>
-        <i />
+      <span className="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none" focusable="false">
+          <path d="M14 49V16H34V24H23V30H33V38H23V49H14Z" fill="currentColor" />
+          <path
+            d="M39 16H50V27M49 17L36 30"
+            stroke="currentColor"
+            strokeWidth="5"
+            strokeLinecap="square"
+            strokeLinejoin="miter"
+          />
+          <circle cx="44" cy="44" r="5" className="brand-signal" />
+        </svg>
       </span>
       <span className="brand-word">
-        FDE CLUB<small>FDE前线产业共创俱乐部</small>
+        <span className="brand-name">
+          <strong>FDE</strong>
+          <span>CLUB</span>
+        </span>
+        <small>FDE前线产业共创俱乐部</small>
       </span>
     </Link>
   );
